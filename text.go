@@ -86,7 +86,7 @@ func Base64Decode(encoded string) string {
 
 // UUID, or GUID, is a 128 bit number used as an ID number. The same number can be represented in different forms.
 //
-// EWMEncodeUUID() converts hexadecimal to the non-standard base64.
+// EWMEncodeUUID() converts hexadecimal to a non-standard base64 used by the EWM system.
 //
 // EWMDecodeUUID() converts the the non-standard base64 to hexadecimal.
 func EWMEncodeUUID(hex string) string {
@@ -98,7 +98,7 @@ func EWMEncodeUUID(hex string) string {
 
 // UUID, or GUID, is a 128 bit number used as an ID number. The same number can be represented in different forms.
 //
-// EWMEncodeUUID() converts hexadecimal to the non-standard base64.
+// EWMEncodeUUID() converts hexadecimal to a non-standard base64 used by the EWM system.
 //
 // EWMDecodeUUID() converts the the non-standard base64 to hexadecimal.
 func EWMDecodeUUID(c22 string) string {
