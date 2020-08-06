@@ -17,7 +17,7 @@ var (
 	reDigits4To15  *regexp.Regexp
 	reAlphaNum7    *regexp.Regexp
 	reAlphaNum8To9 *regexp.Regexp
-	ewmEncoding    *base64.Encoding
+	EWMEncoding    *base64.Encoding
 )
 
 func init() {
@@ -26,7 +26,7 @@ func init() {
 	reDigits4To15 = regexp.MustCompile("^[0-9]{4,15}$")
 	reAlphaNum7 = regexp.MustCompile("^[A-Z0-9]{7,7}$")
 	reAlphaNum8To9 = regexp.MustCompile("^[A-Z0-9]{8,9}$")
-	ewmEncoding = base64.NewEncoding(encodeEWM).WithPadding(base64.NoPadding)
+	EWMEncoding = base64.NewEncoding(encodeEWM).WithPadding(base64.NoPadding)
 }
 
 func ValidAlphaNum8(s string) bool {
@@ -88,11 +88,11 @@ func EWMEncodeUUID(hex string) string {
 	bigInt := new(big.Int)
 	bigInt.SetString(hex, 16)
 	padding := make([]byte, 16-len(bigInt.Bytes()))
-	return ewmEncoding.EncodeToString(append(padding, bigInt.Bytes()...))
+	return EWMEncoding.EncodeToString(append(padding, bigInt.Bytes()...))
 }
 
 func EWMDecodeUUID(c22 string) string {
-	b, _ := ewmEncoding.DecodeString(c22)
+	b, _ := EWMEncoding.DecodeString(c22)
 	bigInt := new(big.Int)
 	bigInt.SetBytes(b)
 	s := strings.ToUpper(bigInt.Text(16))
